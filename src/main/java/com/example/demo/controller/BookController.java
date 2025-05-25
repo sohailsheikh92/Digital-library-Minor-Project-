@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.controller;
 
-import jdk.jfr.Description;
+import com.example.demo.entity.Book;
+import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,26 @@ public class BookController {
         public List<Book> search(@PathVariable String keyword){
             return service.searchBook(keyword);
         }
+    @GetMapping("/filterBname/{bname}")
+    public List<Book> filterByBname(@PathVariable String bname){
+        return service.filtertByBname(bname);
+    }
+
+    @GetMapping("/filterBtype/{btype}")
+    public List<Book> filterByBtype(@PathVariable String btype){
+        return service.filterByBtype(btype);
+    }
+    @GetMapping("/filterBpubliyear/{bpublicationyear}")
+    public List<Book> filterByBpublicationYear(@PathVariable String bpublicationyear){
+        return service.filterByBpublicationyear(bpublicationyear);
+    }
+    @GetMapping("/filterBauthorname/{bauthor}")
+    public List<Book> filterByBauthorname(@PathVariable String bauthor){
+        return service.filterByBauthor(bauthor);
+    }
+    @GetMapping("/sortbyBname")
+    public List<Book> sortByBname(){
+            return service.sortBname();
+    }
 
 }
